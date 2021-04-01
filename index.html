@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Uhhhh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading" style="z-index: 1;"></div>
+    <div class="screen" onclick="closeScreen()"></div>
+    <div class="box one" id="one" onclick="fs(id)"></div>
+    <div class="box two" id="two" onclick="fs('two')"></div>
+    <div class="box three" id="three" onclick="fs('three')"></div>
+    <div class="box four" id="four" onclick="fs('four')"></div>
+    <!-- <div class="middle" id="five">
+        <ul>
+            <li onclick="anime()">Anime</li>
+            <li onclick="random()">Random</li>
+            <li onclick="randomTwo()">Random #2</li>
+        </ul>
+    </div> -->
+    <ul>
+        <li onclick="anime()">Anime</li>
+        <li onclick="giphy()">Random Giphy</li>
+        <li onclick="random()">Random</li>
+        <li onclick="randomTwo()">Random #2</li>
+    </ul>
+    <div class="box six" id="six" onclick="fs('six')"></div>
+    <div class="box seven" id="seven" onclick="fs('seven')"></div>
+    <div class="box eight" id="eight" onclick="fs('eight')"></div>
+    <div class="box nine" id="nine" onclick="fs('nine')"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/CSSRulePlugin.min.js" integrity="sha512-0bzaetZStCnsUgbCtGVxftzF/L32PNOnrMlYLXwBOKl8cUjTSSDfJVyyJsNwGoI0iE0WUqni2eEfO35kJjFj5g==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js" integrity="sha512-kSI9CgGh60rJbNVeMJvfNX0UTKAq8LEOea/yKJQbFpIroxT7bf9/zUFXbnfsQP5F6xlOOHtCfBPgsE1ceiHnRw==" crossorigin="anonymous"></script>
+    <script>
+        function closeScreen(){
+            let screen = document.querySelector(".screen")
+            gsap.to(screen, .25, {scale:0, width:0,height:0})
+            document.querySelectorAll("div").forEach((e,i,p) => {
+                if(e.classList.contains("active")){
+                    e.classList = "box" + " " + e.id
+                }
+            })
+        }
+        function fs(g){
+            let div = document.querySelectorAll("div")
+            let screen = document.querySelector(".screen")
+            div.forEach((e,i, c, d=g) => {
+                if(e.classList.contains("active")){
+                    e.classList = "box" + " " + e.id
+                }
+                let tl = gsap.timeline()
+                if(e.classList.contains(d)){
+                    // console.log({'e':e,'c':c,'i':i, 'd':d})
+                    console.log({"style": e.style})
+                    screen.style.backgroundImage = e.style.backgroundImage
+                    e.classList = "box active" + " " + d
+                    gsap.to(window, { duration: .5, scrollTo: "body" })
+                    tl.fromTo(screen, .35, {scale:0}, {scale:1, width:"100vw", height:"100vh", backgroundRepeat:"no-repeat", backgroundSize:"cover", ease:"expo out"})
+                    tl.fromTo(screen, .4, {filter:"blur(4px)"}, {filter:"blur(0)"}, "<+.3")
+                }
+            })
+        }
+        function anime(){
+            let arr = ["https://media.giphy.com/media/xULW8Nl1xnX0QGqwI8/giphy.gif", "https://media.giphy.com/media/nvPNlAagUMWn6/giphy.gif", "https://media.giphy.com/media/MIpkjNrkJiCXu/giphy.gif", "https://media.giphy.com/media/AhuULvcupAMCbsMmDI/giphy.gif", "https://media.giphy.com/media/3ohzdD7eLeRtCqZsR2/giphy.gif", "https://media.giphy.com/media/fSMx5JkuXXfWTsyMRw/giphy.gif", "https://media.giphy.com/media/xolFgrZj5nvzi/giphy.gif", "https://media.giphy.com/media/f5UwtpUbrAEE0/giphy.gif"]
+            let count = 0
+            document.querySelectorAll(".box").forEach((e,i,p) => {
+                e.style.backgroundImage = "url('"+ arr[count] + "')"
+                count++
+            })
+        }
+        // function giphy(){
+        //     const alpha = Array.from(Array(26)).map((e, i) => i + 65)
+        //     const alphabet = alpha.map((x) => String.fromCharCode(x))
+        //     const aNum = []
+        //     for(let key in alphabet){
+        //         aNum.push(alphabet[key])
+        //         aNum.push(alphabet[key].toLowerCase())
+        //     }
+        //     for(let i = 0; i<10; i++){
+        //         aNum.push(i)
+        //     }
+        //     let arr = [];
+        //     // let mr = Math.random();
+        //     // let mf = Math.floor();
+        //     for(let i = 0; i < 9; i++){
+        //         let iOne = Math.floor(Math.random() * aNum.length)
+        //         let iTwo = Math.floor(Math.random() * aNum.length)
+        //         let iThree = Math.floor(Math.random() * aNum.length)
+        //         let iFour = Math.floor(Math.random() * aNum.length)
+        //         let iFive = Math.floor(Math.random() * aNum.length)
+        //         let iSix = Math.floor(Math.random() * aNum.length)
+        //         let iSeven = Math.floor(Math.random() * aNum.length)
+        //         let iEight = Math.floor(Math.random() * aNum.length)
+        //         let iNine = Math.floor(Math.random() * aNum.length)
+        //         let iTen = Math.floor(Math.random() * aNum.length)
+        //         let iEleven = Math.floor(Math.random() * aNum.length)
+        //         let iTwelve = Math.floor(Math.random() * aNum.length)
+        //         let iThirteen = Math.floor(Math.random() * aNum.length)
+        //         let str = aNum[iOne] + aNum[iTwo] + aNum[iThree] + aNum[iFour] + aNum[iFive] + aNum[iSix] + aNum[iSeven] + aNum[iEight] + aNum[iNine] + aNum[iTen] + aNum[iEleven] + aNum[iTwelve] + aNum[iThirteen]
+        //         arr.push(str)
+        //     }
+        //     console.log(arr)
+        //     document.querySelectorAll(".box").forEach((e,i,p) => {
+        //         e.style.backgroundImage = "url('https://media.giphy.com/media/" + arr[i] + "/source.gif')"
+        //         console.log(arr[i])
+        //     })
+        // }
+        function giphy(){
+            $(document).ready(() => {
+                $.ajax({
+                    type: 'GET',
+                    url: "https://api.giphy.com/v1/gifs/random",
+                    data: {
+                        // 'q': queryString,
+                        'response-format': "jsonp",
+                        api_key: "qA9QSLeTx0yrJmSXxECN3QQ6j2G4DHBs",
+                        rating: "r"
+                    },
+                    success: (r) => {
+                        console.log("success")
+                        console.log(r)
+                        console.log(r.data.url)
+                        document.querySelector(".one").style.backgroundImage = "url('" + r.data.url + "')"
+                    },
+                    error: (r) => {
+                        console.log("error::" + r)
+                    }
+                })
+            })
+        }
+        function random(){
+            let count = 0
+            document.querySelectorAll(".box").forEach((e,i,p) => {
+                e.style.backgroundImage = "url('https://picsum.photos/192" + count + "/1080.webp')"
+                count++
+            })
+        }
+        function randomTwo(){
+            let count = 1
+            document.querySelectorAll(".box").forEach((e,i,p) => {
+                e.style.backgroundImage = "url('https://picsum.photos/192" + count + "/108" + count + ".webp')"
+                count++
+            })
+        }
+        window.addEventListener("load", () => {
+            let tl = gsap.timeline()
+            let loadPage = document.querySelector(".loading")
+            tl.to(loadPage, .5, {
+                opacity: 0
+            })
+            tl.to(loadPage, .2, {
+                display: "none"
+            }, "<+1")
+        });
+        
+    </script>
+
+</body></html>

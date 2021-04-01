@@ -1,0 +1,85 @@
+body {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(250deg, #5a5a5a 0%, black 100%);
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+}
+
+body::-webkit-scrollbar-track {
+  background: #333333;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("https://picsum.photos/id/1003/1920/1080.webp") center;
+  background-color: black;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.active {
+  opacity: .3;
+}
+
+.box {
+  width: 33.33%;
+  height: 33.33%;
+  background-size: cover;
+  position: relative;
+  -webkit-transition: -webkit-filter .5s, -webkit-transform .35s;
+  transition: -webkit-filter .5s, -webkit-transform .35s;
+  transition: filter .5s, transform .35s;
+  transition: filter .5s, transform .35s, -webkit-filter .5s, -webkit-transform .35s;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+}
+
+.box:hover {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 33.33%;
+  height: 33.33%;
+}
+
+ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
+}
+
+ul li:hover {
+  opacity: .5;
+}
+/*# sourceMappingURL=style.css.map */
