@@ -50,6 +50,7 @@ body::-webkit-scrollbar-track {
   transition: filter .5s, transform .35s, opacity .25s, -webkit-filter .5s, -webkit-transform .35s;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
+  opacity: .5;
   -webkit-filter: blur(2.5px);
           filter: blur(2.5px);
 }
@@ -59,7 +60,7 @@ body::-webkit-scrollbar-track {
           filter: blur(0px);
   -webkit-transform: scale(1);
           transform: scale(1);
-  opacity: .5;
+  opacity: 1;
 }
 
 ul {

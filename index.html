@@ -16,15 +16,15 @@
     <div class="box four" id="four" onclick="fs('four')"></div>
     <ul>
         <div class="customizer">
-            <div onclick="changeBlur()">Blur</div>
-            <div onclick="changeScale()">Scale</div>
-            <div onclick="changeTime()">Day</div>
+            <div onclick="changeBlur()" id="blur">Blur</div>
+            <div onclick="changeScale()" id="scale">Scale</div>
+            <div onclick="changeTime()" id="day">Day</div>
         </div>
         <li onclick="anime()">Anime</li>
         <!-- <li onclick="giphy()">Random Giphy</li> -->
         <li onclick="random()">Random</li>
         <li onclick="randomTwo()">Random #2</li>
-        <li onclick="randomThree()">Random #3</li>
+        <!-- <li onclick="randomThree()">Random #3</li> -->
     </ul>
     <div class="box six" id="six" onclick="fs('six')"></div>
     <div class="box seven" id="seven" onclick="fs('seven')"></div>
@@ -74,6 +74,22 @@
                 console.log(e)
                 e.style.filter = "blur(0)"
             })
+            let blur = document.querySelector("#blur")
+            console.log(blur.attributes[0].value)
+            blur.attributes[0].value = "blurBack()"
+            console.log(blur.attributes[0].value)
+        }
+        function blurBack(){
+            let box = document.querySelectorAll(".box")
+            // console.log(box)
+            box.forEach((e,i,p) => {
+                console.log(e)
+                e.style.filter = "blur(5px)"
+            })
+            let blur = document.querySelector("#blur")
+            console.log(blur.attributes[0].value)
+            blur.attributes[0].value = "changeBlur()"
+            console.log(blur.attributes[0].value)
         }
         function  changeScale(){
             let box = document.querySelectorAll(".box")

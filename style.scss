@@ -40,11 +40,12 @@ body {
     position: relative;
     transition: filter .5s, transform .35s, opacity .25s;
     transform: scale(.9);
+    opacity: .5;
     filter: blur(2.5px);
     &:hover{
         filter: blur(0px);
         transform: scale(1);
-        opacity: .5;
+        opacity: 1;
     }
 }
 ul{
