@@ -69,6 +69,14 @@
         }
         function  changeBlur(){
             let box = document.querySelectorAll(".box")
+            box.forEach((e,i,p) => {
+                e.removeEventListener("mouseover", () => {
+                    return
+                })
+                e.removeEventListener("mouseout", () => {
+                    return
+                })
+            })
             // console.log(box)
             box.forEach((e,i,p) => {
                 console.log(e)
@@ -85,6 +93,12 @@
             box.forEach((e,i,p) => {
                 console.log(e)
                 e.style.filter = "blur(5px)"
+                e.addEventListener("mouseover", (a) => {
+                    gsap.to(e, .125, {filter: "blur(0)"})
+                })
+                e.addEventListener("mouseout", v => {
+                    gsap.to(e, .125, {filter:"blur(3px)"})
+                })
             })
             let blur = document.querySelector("#blur")
             console.log(blur.attributes[0].value)
