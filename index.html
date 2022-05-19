@@ -111,6 +111,13 @@
                 console.log(e)
                 e.style.transform = "scale(1)"
             })
+            $('#scale').attr('onclick', 'scaleBack()')
+        }
+        function scaleBack(){
+            $('.box').each(function (i,e) {
+                e.style.transform = "scale(.9)"
+            })
+            $('#scale').attr('onclick', 'changeScale()')
         }
         function changeTime(){
             console.log("yag")
@@ -120,6 +127,12 @@
             let body = document.querySelector("body")
             console.log(getComputedStyle(body).backgroundImage);
             gsap.fromTo(body, .25, {background: getComputedStyle(body).backgroundImage}, {background: "linear-gradient(250deg, rgb(100,100,100) 0%, rgb(225,225,225) 100%)"})
+            $('#day').attr('onclick', 'changeNight()')
+        }
+        function changeNight(){
+            console.log($('ul'));
+            $('ul')[0].style.filter = 'invert(0%)'
+            $('#day').attr('onclick', 'changeTime()')
         }
         function anime(){
             let arr = ["https://media.giphy.com/media/xULW8Nl1xnX0QGqwI8/giphy.gif", "https://media.giphy.com/media/nvPNlAagUMWn6/giphy.gif", "https://media.giphy.com/media/MIpkjNrkJiCXu/giphy.gif", "https://media.giphy.com/media/AhuULvcupAMCbsMmDI/giphy.gif", "https://media.giphy.com/media/3ohzdD7eLeRtCqZsR2/giphy.gif", "https://media.giphy.com/media/fSMx5JkuXXfWTsyMRw/giphy.gif", "https://media.giphy.com/media/xolFgrZj5nvzi/giphy.gif", "https://media.giphy.com/media/f5UwtpUbrAEE0/giphy.gif"]
